@@ -1,11 +1,18 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import NavbarButton from "./NavbarButton";
-import { Flex, DropdownMenu, Button } from "@radix-ui/themes";
+import { DropdownMenu, Button } from "@radix-ui/themes";
+import { useState } from "react";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const signUp = () => console.log("User sign up");
+  const logIn = () => console.log("User log in");
   return (
-    <nav className="flex justify-between items-center bg-white border-b-2 h-20 px-6 py-6">
+    <nav className="flex justify-between items-center bg-white border-b-2 h-20 px-6 py-6 ">
+      {/* Logo */}
       <Link href="/">
         <Image
           src="/logo.png"
@@ -15,14 +22,15 @@ const Navbar = () => {
           className="pl-[24px] pr-[24px]"
         />
       </Link>
+      {/* Desktop Menu */}
       <div>
         {
-          <div className="space-x-3 flex justify-center items-center">
+          <div className="hidden space-x-3 md:flex justify-center items-center">
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>
                 <Button
                   variant="solid"
-                  className="flex justify-center items-center focus:outline-none focus:ring-0 hover:text-primary"
+                  className="flex justify-center items-center focus:outline-none focus:ring-0 hover:text-primary md:text-sm "
                 >
                   Catalog
                   <DropdownMenu.TriggerIcon className="ml-2" />
@@ -33,7 +41,7 @@ const Navbar = () => {
                 className="bg-primary/50 text-white border border-gray-300 shadow-md rounded-md w-auto p-2"
                 align="center"
               >
-                <DropdownMenu.Item className="focus:outline-none focus:ring-0 hover:bg-gray-200  hover:text-gray-600 rounded-md px-2 ">
+                <DropdownMenu.Item className="focus:outline-none focus:ring-0 hover:bg-gray-200  hover:text-gray-600 rounded-md px-2  ">
                   Data Center
                 </DropdownMenu.Item>
                 <DropdownMenu.Item className="focus:outline-none focus:ring-0 hover:bg-gray-200  hover:text-gray-600 rounded-md px-2">
@@ -51,21 +59,21 @@ const Navbar = () => {
               </DropdownMenu.Content>
             </DropdownMenu.Root>
 
-            <Link href="/" className="hover:text-primary">
+            <Link href="/" className="hover:text-primary md:text-sm ">
               Resources
             </Link>
-            <Link href="/" className="hover:text-primary">
+            <Link href="/" className="hover:text-primary md:text-sm ">
               Community
             </Link>
-            <Link href="/" className="hover:text-primary">
+            <Link href="/" className="hover:text-primary md:text-sm ">
               FAQs
             </Link>
           </div>
         }
       </div>
-      <div className="space-x-3">
+      {/* Desktop Buttons */}
+      <div className="hidden space-x-3 md:flex">
         <NavbarButton
-          children="Log In"
           bgColor="bg-white"
           icon={
             <svg
@@ -98,9 +106,11 @@ const Navbar = () => {
               />
             </svg>
           }
-        />
+          onClick={logIn}
+        >
+          Log In
+        </NavbarButton>
         <NavbarButton
-          children="Sign Up"
           bgColor=""
           textColor="text-white"
           icon={
@@ -141,8 +151,75 @@ const Navbar = () => {
               />
             </svg>
           }
-        />
+          onClick={signUp}
+        >
+          Sign Up
+        </NavbarButton>
       </div>
+
+      {/* Mobile Menu Toggle Button */}
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="md:hidden p-2 focus:outline-none"
+      >
+        {menuOpen ? <AiOutlineClose size={28} /> : <AiOutlineMenu size={28} />}
+      </button>
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="absolute top-20 left-0 w-full bg-white shadow-md flex flex-col items-center py-6 space-y-4 md:hidden">
+          <div className=" space-x-3 md:flex justify-center items-center">
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger>
+                <Button
+                  variant="solid"
+                  className="flex justify-center items-center focus:outline-none focus:ring-0 hover:text-primary md:text-sm "
+                >
+                  Catalog
+                  <DropdownMenu.TriggerIcon className="ml-2" />
+                </Button>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content
+                variant="solid"
+                className="bg-primary/50 text-white border border-gray-300 shadow-md rounded-md w-auto p-2"
+                align="center"
+              >
+                <DropdownMenu.Item className="focus:outline-none focus:ring-0 hover:bg-gray-200  hover:text-gray-600 rounded-md px-2 ">
+                  Data Center
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="focus:outline-none focus:ring-0 hover:bg-gray-200  hover:text-gray-600 rounded-md px-2">
+                  Cloud Computing
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="focus:outline-none focus:ring-0 hover:bg-gray-200  hover:text-gray-600 rounded-md px-2">
+                  AI Academy
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="focus:outline-none focus:ring-0 hover:bg-gray-200  hover:text-gray-600 rounded-md px-2">
+                  Profile
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="focus:outline-none focus:ring-0 hover:bg-gray-200  hover:text-gray-600 rounded-md px-2">
+                  Support
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
+          </div>
+          <Link href="/" className="hover:text-primary text-lg">
+            Resources
+          </Link>
+          <Link href="/" className="hover:text-primary text-lg">
+            Community
+          </Link>
+          <Link href="/" className="hover:text-primary text-lg">
+            FAQs
+          </Link>
+          <div className="space-x-3 flex flex-col justify-center items-center">
+            <NavbarButton bgColor="" textColor="text-white" onClick={signUp}>
+              Sign Up
+            </NavbarButton>
+            <NavbarButton bgColor="bg-gray" onClick={logIn}>
+              Log In
+            </NavbarButton>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
