@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@radix-ui/themes";
 import Image from "next/image";
 
@@ -45,10 +46,16 @@ const Hero = () => {
 
         {/* Buttons */}
         <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button className="bg-[#021488] text-white w-[80%] sm:w-[265px] h-[50px] sm:h-[66px] px-6 sm:px-[39px] py-3 sm:py-[21px] text-base sm:text-lg font-semibold shadow-md hover:bg-blue-800 transition">
+          <Button
+            onClick={() => console.log("Get Started")}
+            className="bg-[#021488] text-white w-[80%] sm:w-[265px] h-[50px] sm:h-[66px] px-6 sm:px-[39px] py-3 sm:py-[21px] text-base sm:text-lg font-semibold shadow-md hover:bg-blue-800 transition"
+          >
             Get Started →
           </Button>
-          <Button className="border-4 border-[#021488] w-[80%] sm:w-[265px] h-[50px] sm:h-[86px] text-[#021488] px-6 py-3 text-base sm:text-lg font-semibold hover:bg-[#021488] hover:text-white transition">
+          <Button
+            onClick={() => console.log("Learn more")}
+            className="border-4 border-[#021488] w-[80%] sm:w-[265px] h-[50px] sm:h-[86px] text-[#021488] px-6 py-3 text-base sm:text-lg font-semibold hover:bg-[#021488]/70 hover:text-white transition"
+          >
             Learn More
           </Button>
         </div>
@@ -58,4 +65,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
