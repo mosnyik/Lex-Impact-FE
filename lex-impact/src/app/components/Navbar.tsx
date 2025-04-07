@@ -166,7 +166,7 @@ const Navbar = () => {
       </button>
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="absolute top-20 left-0 w-full bg-white shadow-md flex flex-col items-center py-6 space-y-4 md:hidden">
+        <div className="absolute top-20 left-0 w-full bg-white shadow-md flex flex-col items-center py-6 space-y-4 md:hidden z-50">
           <div className=" space-x-3 md:flex justify-center items-center">
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>

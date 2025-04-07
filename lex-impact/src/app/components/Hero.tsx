@@ -16,7 +16,7 @@ const Hero = () => {
         />
       </div>
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-heroStrong/95 via-white/90 to-heroMild/90"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-heroStrong/95 via-white/90 to-heroMild/90 z-0"></div>
 
       {/* Hero Content */}
       <div className="z-10 max-w-4xl px-4 sm:px-6">
