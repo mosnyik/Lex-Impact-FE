@@ -12,6 +12,8 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "#021488", // Custom theme color
+        heroStrong: "#C5ECF4E5", // hero overlay strong
+        heroMild: "#E2F5F9E5", // heor overlay mild
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
