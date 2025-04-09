@@ -32,7 +32,6 @@ export default function RootLayout({
       >
         <Theme >
           <Navbar />
-          <Platform/>
           {children}
         </Theme>
       </body>

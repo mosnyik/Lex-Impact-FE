@@ -1,42 +1,33 @@
 // import { div, divContent, divDescription, div, divTitle } from "@/components/ui/div"
 import Image from "next/image";
 import { ourPlatform } from "../../assets/assets";
+import Card from "./Card";
 const Platform = () => {
   return (
-    <>
-    <div className="container mx-auto px-4 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold tracking-tight mb-2">Our Platform</h1>
-        <p className="text-lg text-muted-foreground">Three powerful solutions working together to drive innovation and growth</p>
+    
+    <div>
+      <div className="text-center mb-12 bg-white">
+        <h1 className="text-5xl font-medium font-montserrat text-black mb-2 leading-10 h-[59px] mx-auto mt-10 w-[320px]">Our Platform</h1>
+        <p className="h-[20px] w-[597px] mx-auto font-montserrat font-normal text-base leading-10 text-[#6b7280]">Three powerful solutions working together to drive innovation and growth</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border-gray-600">
-        {ourPlatform.map(({title, description, bgImage},index)=>(
-           <div key={index} className="flex flex-col h-full items-center">
-           <div>
-             <div className="w-full h-48 mb-4 rounded-md overflow-hidden">
-               <Image
-                 src={bgImage}
-                 alt={title}
-                 className="w-full h-full object-cover"
-                 width={40}
-                 height={40}
-               />
-             </div>
-             <div className="text-center">{title}</div>
+      <div className="grid grid-cols-3 w-full h-[450px] py-10 left-1 bg-[#e2f5f9] mx-auto">
+        {/* width: 1440;
+height: 660;
+top: 1071px;
+left: 1px;
+background: #E2F5F9C4;
+
+ */}
+        {ourPlatform.map((card,index)=>(
+           <div key={index} className="gap-10 p-6">
+        <Card image={card.bgImage} title={card.title} description={card.description}/>
           
-           </div>
-           <div className="flex-grow">
-             <p className="text-muted-foreground text-center">
-              {description}
-             </p>
-           </div>
          </div>
         ))}
         
       </div>
     </div>
-    </>
   )
 }
 
