@@ -11,7 +11,7 @@ const Platform = () => {
         <p className="h-[20px] w-[597px] mx-auto font-montserrat font-normal text-base leading-10 text-[#6b7280]">Three powerful solutions working together to drive innovation and growth</p>
       </div>
 
-      <div className="grid grid-cols-3 w-full h-[450px] py-10 left-1 bg-[#e2f5f9] mx-auto">
+      <div className="grid grid-cols-3 w-full h-[580px] py-10 left-1 bg-[#e2f5f9] mx-auto">
         {/* width: 1440;
 height: 660;
 top: 1071px;
@@ -20,7 +20,7 @@ background: #E2F5F9C4;
 
  */}
         {ourPlatform.map((card,index)=>(
-           <div key={index} className="gap-10 p-6">
+           <div key={index} className="gap-8 p-6">
         <Card image={card.bgImage} title={card.title} description={card.description}/>
           
          </div>
